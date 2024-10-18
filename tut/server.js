@@ -1,16 +1,14 @@
 // server.js
 const express = require('express');
+const path = require('path')
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Serve static files from the React frontend
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
+const PORT = 3000;
 
 // Fallback for all other requests (SPA behavior)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+app.get('/', (req, res) => {
+  res.send("Hello, world!");
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });

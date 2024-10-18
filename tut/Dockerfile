@@ -1,11 +1,11 @@
-FROM node:10-alpine
+FROM node:16-alpine
 
 RUN mkdir -p /src/app
 WORKDIR /src/app
 
 COPY package.json /src/app/package.json
 RUN npm install
-COPY ./src/app
+COPY . /src/app
 
 EXPOSE 3000
-CMD["npm", "start"]  
+CMD ["npm", "start"]  
